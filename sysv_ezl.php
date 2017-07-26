@@ -12,8 +12,6 @@
 
 add_option('sysv_ezl_vals_option',array());
 
-add_option('sysv_ezl_instances',array());
-
 function registration_redirect(){
 	wp_redirect( $sysv_ezl_global_use['text']['reg_redir']);
 }	
@@ -92,7 +90,6 @@ class sysv_ezl_widget extends WP_Widget {
 	public function getvals(){
 		return $sysv_ezl_global_use;
 	}
-	private $id = rand();
 	// constructor
 	function __construct() {
 		$widget_ops = array('classname' => 'sysv_ezl_widget', 'description' => __('EZ Login Core', 'wp_widget_plugin'));
@@ -112,7 +109,6 @@ class sysv_ezl_widget extends WP_Widget {
 		if( $instance ) {
 			$sysv_ezl_vals = $instance['sysv_ezl_vals'];
 			update_option('sysv_ezl_vals_option', $sysv_ezl_vals);
-			$this->id;
 		}
 		else {
 			//entry values for visible field boxes
@@ -143,7 +139,6 @@ class sysv_ezl_widget extends WP_Widget {
 					'procimg' => 'pacloader.gif'
 				)
 			);
-			$this->id = rand();
 			update_option('sysv_ezl_vals_option', $sysv_ezl_vals);
 		}
 
@@ -358,7 +353,7 @@ class sysv_ezl_widget extends WP_Widget {
 			)
 		);
 		update_option('sysv_ezl_vals_option', $sysv_ezl_vals);
-		return $instance;
+		return $instance;	
 	}
 
 	// widget display
